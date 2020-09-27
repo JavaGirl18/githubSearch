@@ -1,7 +1,7 @@
-.ui.center.aligned.grid.App {
+.App {
   height: 100vh;
   margin-top: 100px;
-  padding: 20px 20px 20px 20px;
+  padding: 40px;
 }
 
 .App-logo {

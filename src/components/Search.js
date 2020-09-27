@@ -8,18 +8,14 @@ export default function Search() {
   const [results, setResults] = useState([]);
   const [display, setDisplay] = useState(false);
 
-  const options = [
-    { key: 1, text: "Users", value: "Users" },
-    { key: 2, text: "Repositories", value: "Repositories" }
-  ];
-
   const setData = ({ items }) => {
     setResults(items);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = e => {
+    e.preventDefault();
     if (selection === "Users" && userInput.length >= 5) {
-      fetch(`https://api.github.com/search/users?q=${userInput}&per_page=5`)
+      fetch(`https://api.github.com/search/users?q=${userInput}&per_page=9`)
         .then(res => res.json())
         .then(data => {
           setData(data);
@@ -27,7 +23,7 @@ export default function Search() {
     }
     if (selection === "Repositories" && userInput.length >= 5) {
       fetch(
-        `https://api.github.com/search/repositories?q=${userInput}&per_page=5`
+        `https://api.github.com/search/repositories?q=${userInput}&per_page=9`
       )
         .then(res => res.json())
         .then(data => {
@@ -36,42 +32,46 @@ export default function Search() {
     }
   };
 
-  const handleSelection = (e, { value }) => {
-    setSelection(value);
+  const handleSelection = e => {
+    setSelection(e.target.value);
   };
-  const handleUserInput = (e, { value }) => {
-    setUserInput(value);
+  const handleUserInput = e => {
+    setUserInput(e.target.value);
   };
   console.log({ results });
 
   return (
-    <>
-      <Form>
-        <Header as="h4">
+    <div className="form">
+      <form>
+        <h4>
           <Icon name="github" />
-          <Header.Content>GitHubin</Header.Content>
-        </Header>
-        <Form.Group>
-          <Form.Input
-            focus
-            placeholder="Search..."
-            size="big"
-            style={{ width: "325px" }}
-            onChange={handleUserInput}
-          />
-          <Form.Select
-            // clearable
-            options={options}
-            selection
-            onChange={handleSelection}
-            style={{ minHeight: "3.3rem" }}
-          />
-          <Form.Button onClick={handleSubmit} style={{ minHeight: "3.3rem" }}>
-            Submit
-          </Form.Button>
-        </Form.Group>
-      </Form>
+          {/* <i className="fab fa-github"></i> */}
+          GitHubin
+        </h4>
+        <input
+          placeholder="Search..."
+          style={{ minHeight: "3.3rem", width: "325px" }}
+          onChange={handleUserInput}
+        />
+        <select
+          id="choose"
+          name="choose"
+          style={{ minHeight: "3.3rem", width: "125px" }}
+          onChange={handleSelection}
+        >
+          <option value=""></option>
+          <option value="Users">Users</option>
+          <option value="Repositories">Repositories</option>
+        </select>
+
+        <input
+          type="submit"
+          value="Submit"
+          onClick={handleSubmit}
+          style={{ minHeight: "3.3rem" }}
+        />
+      </form>
       <Results items={results} />
-    </>
+    </div>
   );
 }

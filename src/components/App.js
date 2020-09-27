@@ -5,14 +5,9 @@ import "./App.css";
 
 function App() {
   return (
-    <Grid
-      className="App"
-      container
-      textAlign="center"
-      // style={{ border: "solid" }}
-    >
+    <div className="App">
       <MainLayout />
-    </Grid>
+    </div>
   );
 }
 
