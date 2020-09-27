@@ -9,7 +9,7 @@ function App() {
       className="App"
       container
       textAlign="center"
-      style={{ border: "solid" }}
+      // style={{ border: "solid" }}
     >
       <MainLayout />
     </Grid>
