@@ -1,6 +1,6 @@
 import React from "react";
 import { Search } from ".";
-import "./Results.css";
+import "./App.css";
 
 export default function MainLayout() {
   return (

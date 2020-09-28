@@ -8,3 +8,55 @@
   background-color: #2ecbc3;
   padding: 20px;
 }
+
+.header-container {
+  display: flex;
+}
+
+.grid {
+  display: flex; /* establish flex container */
+  flex-wrap: wrap; /* enable flex items to wrap */
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.main {
+  display: grid;
+  place-items: center;
+}
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 10px;
+  height: 5%;
+  flex: 0 0 32%; /* don't grow, don't shrink, width */
+  /* height: 50px; */
+  margin-bottom: 5px;
+  /* padding: 20px; */
+  /* align-items: ;; */
+  /* border: solid; */
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px 2px 16px;
+}
+.image {
+  background-size: contain;
+  width: 100%;
+  /* height: 30%; */
+}
+.gitHub {
+  height: 5rem;
+}
+
+input:invalid:focus {
+  background-image: linear-gradient(pink, red);
+}

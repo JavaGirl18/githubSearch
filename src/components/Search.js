@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Results } from ".";
 import axios from "axios";
-import "./Results.css";
+import image from "../github.png";
+import "./App.css";
 
 export default function Search() {
   const [selection, setSelection] = useState("Users");
@@ -22,7 +23,6 @@ export default function Search() {
 
   const fetchData = async () => {
     setLoading(true);
-    console.log(loading);
     try {
       if (selection === "Users" && userInput.length >= 3) {
         setError({});
@@ -43,7 +43,6 @@ export default function Search() {
         const res = await axios(
           `https://api.github.com/search/repositories?q=${userInput}&per_page=9`
         );
-        console.log(res);
         if (res.data.total_count > 0) {
           setData(res.data);
         } else {
@@ -76,16 +75,13 @@ export default function Search() {
 
   return (
     <>
-      <h3>Start typing to search on GitHub</h3>
+      <div style={{ display: "flex" }}>
+        <img src={image} className="gitHub" alt="" />
+        <h3>Start typing to search on GitHub</h3>
+      </div>
       <p>You can search for users & repositories</p>
       <div className="form">
         <form>
-          <h4>
-            {/* <Icon name="github" /> */}
-            {/* <i className="fab fa-github"></i> */}
-            GitHubin
-          </h4>
-
           <input
             placeholder="Search..."
             style={{ minHeight: "3.3rem", width: "325px" }}
@@ -98,7 +94,6 @@ export default function Search() {
             style={{ minHeight: "3.3rem", width: "125px" }}
             onChange={handleSelection}
           >
-            {/* <option value=""></option> */}
             <option value="Users" selected>
               Users
             </option>

@@ -1,10 +1,9 @@
 import React from "react";
-import "./Results.css";
+import "./App.css";
 import image from "../fork.png";
 import { isEmpty } from "lodash";
 
 export default function Results({ items, isUser, isLoading, error }) {
-  console.log(error);
   return (
     <div className="grid">
       {isLoading ? (
