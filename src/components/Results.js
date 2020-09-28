@@ -1,25 +1,43 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import "./Results.css";
 import image from "../fork.png";
 
-export default function Results({ items }) {
-  console.log({ items });
-  // const default = './fork.png'
-
+export default function Results({ items, isUser, isLoading, error }) {
   return (
     <div className="grid">
       {items.map((res, index) => {
-        const { avatar_url, login, url, name, full_name, forks } = res;
+        const {
+          avatar_url,
+          login,
+          url,
+          html_url,
+          name,
+          full_name,
+          forks,
+          stargazers_count,
+          owner
+        } = res;
         return (
           <div className="card">
             <img className="image" src={avatar_url ? avatar_url : image}></img>
             <div className="container">
               <h4>
-                <b>{login ? login : full_name}</b>
+                <b> Owner: {login ? login : owner.login}</b>
               </h4>
-              <a>
-                <p style={{ wordBreak: "break-word" }}>{url}</p>
-              </a>
+
+              {isUser ? (
+                <p style={{ wordBreak: "break-word" }}>
+                  Profile URL: <a>{url}</a>
+                </p>
+              ) : (
+                <p style={{ wordBreak: "break-word" }}>
+                  Repository URL: <a>{url}</a>
+                </p>
+              )}
+              {!isUser && (
+                <p style={{ wordBreak: "break-word" }}>Forks: {forks}</p>
+              )}
+              {stargazers_count && <p>Star Count: {stargazers_count}</p>}
             </div>
           </div>
         );

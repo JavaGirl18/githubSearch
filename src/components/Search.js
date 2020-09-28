@@ -1,35 +1,61 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Header, Grid, Input, Dropdown, Icon, Form } from "semantic-ui-react";
-import { GetData, Results } from ".";
+import React, { useState } from "react";
+import { Results } from ".";
+import axios from "axios";
 
 export default function Search() {
   const [selection, setSelection] = useState("");
   const [userInput, setUserInput] = useState("");
   const [results, setResults] = useState([]);
-  const [display, setDisplay] = useState(false);
+  const [isUser, setIsUser] = useState(false);
+  const [error, setError] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const setData = ({ items }) => {
     setResults(items);
+    if (selection === "Users") {
+      setIsUser(true);
+    } else {
+      setIsUser(false);
+    }
   };
 
+  const fetchData = async () => {
+    setLoading(true);
+    console.log(loading);
+    try {
+      if (selection === "Users") {
+        const res = await axios(
+          `https://api.github.com/search/users?q=${userInput}&per_page=9`
+        );
+        console.log(res);
+        {
+          res.data.total_count > 0
+            ? setData(res.data)
+            : setError((error.message = "No results"));
+        }
+      }
+      if (selection === "Repositories") {
+        const res = axios(
+          `https://api.github.com/search/repositories?q=${userInput}&per_page=9`
+        );
+        console.log(res);
+        {
+          res.data.total_count > 0
+            ? setData(res.data)
+            : setError((error.message = "No results"));
+        }
+        setData(res.data);
+      }
+    } catch (err) {
+      setError(err);
+    }
+    setLoading(false);
+  };
+
+  console.log(error);
   const handleSubmit = e => {
     e.preventDefault();
-    if (selection === "Users" && userInput.length >= 5) {
-      fetch(`https://api.github.com/search/users?q=${userInput}&per_page=9`)
-        .then(res => res.json())
-        .then(data => {
-          setData(data);
-        });
-    }
-    if (selection === "Repositories" && userInput.length >= 5) {
-      fetch(
-        `https://api.github.com/search/repositories?q=${userInput}&per_page=9`
-      )
-        .then(res => res.json())
-        .then(data => {
-          setData(data);
-        });
-    }
+    fetchData();
   };
 
   const handleSelection = e => {
@@ -38,16 +64,16 @@ export default function Search() {
   const handleUserInput = e => {
     setUserInput(e.target.value);
   };
-  console.log({ results });
 
   return (
     <div className="form">
       <form>
         <h4>
-          <Icon name="github" />
+          {/* <Icon name="github" /> */}
           {/* <i className="fab fa-github"></i> */}
           GitHubin
         </h4>
+
         <input
           placeholder="Search..."
           style={{ minHeight: "3.3rem", width: "325px" }}
@@ -71,7 +97,12 @@ export default function Search() {
           style={{ minHeight: "3.3rem" }}
         />
       </form>
-      <Results items={results} />
+      <Results
+        items={results}
+        isUser={isUser}
+        isLoading={loading}
+        error={error}
+      />
     </div>
   );
 }
