@@ -10,7 +10,7 @@ export default function Results({ items, isUser, isLoading, error }) {
           avatar_url,
           login,
           url,
-          html_url,
+          followers,
           name,
           full_name,
           forks,
@@ -28,6 +28,7 @@ export default function Results({ items, isUser, isLoading, error }) {
               {isUser ? (
                 <p style={{ wordBreak: "break-word" }}>
                   Profile URL: <a>{url}</a>
+                  {followers}
                 </p>
               ) : (
                 <p style={{ wordBreak: "break-word" }}>

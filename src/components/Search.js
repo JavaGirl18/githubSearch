@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Results } from ".";
 import axios from "axios";
 
 export default function Search() {
-  const [selection, setSelection] = useState("");
+  const [selection, setSelection] = useState("Users");
   const [userInput, setUserInput] = useState("");
   const [results, setResults] = useState([]);
   const [isUser, setIsUser] = useState(false);
@@ -23,28 +23,27 @@ export default function Search() {
     setLoading(true);
     console.log(loading);
     try {
-      if (selection === "Users") {
+      if (selection === "Users" && userInput.length >= 3) {
         const res = await axios(
           `https://api.github.com/search/users?q=${userInput}&per_page=9`
         );
-        console.log(res);
-        {
-          res.data.total_count > 0
-            ? setData(res.data)
-            : setError((error.message = "No results"));
+
+        if (res.data.total_count > 0) {
+          setData(res.data);
+        } else {
+          setError({ error: "No results" });
         }
       }
-      if (selection === "Repositories") {
-        const res = axios(
+      if (selection === "Repositories" && userInput.length >= 3) {
+        const res = await axios(
           `https://api.github.com/search/repositories?q=${userInput}&per_page=9`
         );
         console.log(res);
-        {
-          res.data.total_count > 0
-            ? setData(res.data)
-            : setError((error.message = "No results"));
+        if (res.data.total_count > 0) {
+          setData(res.data);
+        } else {
+          setError({ error: "No results" });
         }
-        setData(res.data);
       }
     } catch (err) {
       setError(err);
@@ -52,7 +51,7 @@ export default function Search() {
     setLoading(false);
   };
 
-  console.log(error);
+  console.log(results);
   const handleSubmit = e => {
     e.preventDefault();
     fetchData();
@@ -64,6 +63,14 @@ export default function Search() {
   const handleUserInput = e => {
     setUserInput(e.target.value);
   };
+
+  useEffect(() => {
+    if (selection && userInput.length >= 3) {
+      fetchData();
+    } else if (selection && userInput.length < 3) {
+      setResults([]);
+    }
+  }, [selection, userInput]);
 
   return (
     <div className="form">
@@ -85,17 +92,19 @@ export default function Search() {
           style={{ minHeight: "3.3rem", width: "125px" }}
           onChange={handleSelection}
         >
-          <option value=""></option>
-          <option value="Users">Users</option>
+          {/* <option value=""></option> */}
+          <option value="Users" selected>
+            Users
+          </option>
           <option value="Repositories">Repositories</option>
         </select>
 
-        <input
+        {/* <input
           type="submit"
           value="Submit"
           onClick={handleSubmit}
           style={{ minHeight: "3.3rem" }}
-        />
+        /> */}
       </form>
       <Results
         items={results}
