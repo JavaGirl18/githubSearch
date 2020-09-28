@@ -1,68 +1,15 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Welcome to GitHub Search!
 
-## Available Scripts
+#### Description:
 
-In the project directory, you can run:
+in this project users will be able to utilize the GitHUb Api to search for users and repositories and view the data associated with each. This tool is fast and intutive, simply type a user name or the name of a repositiory and the results will be displayed in kind.
 
-### `yarn start`
+### Set Up
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To get started please fork or clone this repo and run `npm install`. Next, run `npm start` and go to `http://localhost:3000` in your browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Learn about my process
 
-### `yarn test`
+Firstly, I want to say that I had a ton of fun building this project. This project brouhgt back memories of when I first began coding and pure css was all that I knew. As I proigressed through my career, I began to use a variety of styling libraries and although they are great to work with they certainly come with unexpected effect of exercising pure css styling. It was great to get back to my foundation with css and also freshen up on api calls.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Some of the main decisions I made with this project was utilizing hooks such as useState and useEffect. In hindsight, I could have refactored my api call into a custom hook or possibly made use of useAsync. I chose to use this hooks to manage and update my state because of their simplicity. I focused my efforts on making a good user experience and overcoming errors. I wanted this to be a straightforward, easy to use product so I made sure that I could inform the user on how to properly use the tool and also when they weren't. I'm glad that the functionality is present. I can use this as a foundation to refactor at a later time.
