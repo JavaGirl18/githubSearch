@@ -8,6 +8,10 @@ in this project users will be able to utilize the GitHUb Api to search for users
 
 To get started please fork or clone this repo and run `npm install`. Next, run `npm start` and go to `http://localhost:3000` in your browser.
 
+#### Test
+
+Please run `npm test` to run the test suite for this project.
+
 ### Learn about my process
 
 Firstly, I want to say that I had a ton of fun building this project. This project brouhgt back memories of when I first began coding and pure css was all that I knew. As I proigressed through my career, I began to use a variety of styling libraries and although they are great to work with they certainly come with unexpected effect of exercising pure css styling. It was great to get back to my foundation with css and also freshen up on api calls.

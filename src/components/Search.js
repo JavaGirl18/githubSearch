@@ -86,7 +86,7 @@ export default function Search() {
             placeholder="Search..."
             style={{ minHeight: "3.3rem", width: "325px" }}
             onChange={handleUserInput}
-            minlength="3"
+            minLength="3"
           />
           <select
             id="choose"
@@ -94,7 +94,7 @@ export default function Search() {
             style={{ minHeight: "3.3rem", width: "125px" }}
             onChange={handleSelection}
           >
-            <option value="Users" selected>
+            <option value="Users" defaultValue>
               Users
             </option>
             <option value="Repositories">Repositories</option>

@@ -16,7 +16,7 @@ export default function Results({ items, isUser, isLoading, error }) {
       {items.map((res, index) => {
         const { avatar_url, login, url, forks, stargazers_count, owner } = res;
         return (
-          <div className="card">
+          <div className="card" key={res.url}>
             <img
               className="image"
               alt=""

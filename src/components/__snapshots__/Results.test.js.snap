@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders the results 1`] = `
+<div
+  class="grid"
+>
+  <div
+    class="card"
+  >
+    <img
+      alt=""
+      class="image"
+      src="https://avatars1.githubusercontent.com/u/57936?v=4"
+    />
+    <div
+      class="container"
+    >
+      <h4>
+        <b>
+           Owner: 
+          test1
+        </b>
+      </h4>
+      <p
+        style="word-break: break-word;"
+      >
+        Repository URL:
+         
+        <a
+          href="https://api.github.com/users/example/1"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          https://api.github.com/users/example/1
+        </a>
+      </p>
+      <p
+        style="word-break: break-word;"
+      >
+        Forks: 
+      </p>
+    </div>
+  </div>
+  <div
+    class="card"
+  >
+    <img
+      alt=""
+      class="image"
+      src="https://avatars1.githubusercontent.com/u/57936?v=3"
+    />
+    <div
+      class="container"
+    >
+      <h4>
+        <b>
+           Owner: 
+          test2
+        </b>
+      </h4>
+      <p
+        style="word-break: break-word;"
+      >
+        Repository URL:
+         
+        <a
+          href="https://api.github.com/users/example/2"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          https://api.github.com/users/example/2
+        </a>
+      </p>
+      <p
+        style="word-break: break-word;"
+      >
+        Forks: 
+      </p>
+    </div>
+  </div>
+</div>
+`;
